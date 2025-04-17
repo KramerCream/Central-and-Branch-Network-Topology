@@ -20,6 +20,11 @@ The network includes the following devices and features:
 
 > 🎯 Goal: To create a fully functional enterprise-style network with central and branch offices connected dynamically and logically using Cisco best practices.
 
+Here is the visual representation of the topology:
+
+![topology](CentralandBranchNetworkTopology.png)
+
+
 ---
 
 ## ⚙️ Technologies Used and Explanations

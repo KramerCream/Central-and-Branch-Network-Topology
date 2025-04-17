@@ -1,0 +1,112 @@
+Building configuration...
+
+Current configuration : 1546 bytes
+!
+version 15.1
+no service timestamps log datetime msec
+no service timestamps debug datetime msec
+no service password-encryption
+!
+hostname Rt-Atasehir
+!
+!
+!
+!
+ip dhcp excluded-address 10.0.10.1
+ip dhcp excluded-address 10.0.10.129
+ip dhcp excluded-address 10.0.10.2
+ip dhcp excluded-address 10.0.10.130
+!
+ip dhcp pool LAN1
+ network 10.0.10.0 255.255.255.128
+ default-router 10.0.10.1
+ip dhcp pool LAN2
+ network 10.0.10.128 255.255.255.128
+ default-router 10.0.10.129
+!
+!
+!
+no ip cef
+no ipv6 cef
+!
+!
+!
+!
+license udi pid CISCO1941/K9 sn FTX15241J0U-
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+spanning-tree mode pvst
+!
+!
+!
+!
+!
+!
+interface GigabitEthernet0/0
+ no ip address
+ duplex auto
+ speed auto
+!
+interface GigabitEthernet0/0.1
+ encapsulation dot1Q 20
+ ip address 10.0.10.1 255.255.255.128
+!
+interface GigabitEthernet0/0.2
+ encapsulation dot1Q 30
+ ip address 10.0.10.129 255.255.255.128
+!
+interface GigabitEthernet0/1
+ no ip address
+ duplex auto
+ speed auto
+ shutdown
+!
+interface GigabitEthernet0/0/0
+ description connect Atasehir to Sisli
+ ip address 192.168.100.2 255.255.255.252
+!
+interface GigabitEthernet0/1/0
+ description connect Atasehir to Sariyer
+ ip address 192.168.100.6 255.255.255.252
+!
+interface Vlan1
+ no ip address
+ shutdown
+!
+router ospf 1
+ router-id 30.30.30.30
+ log-adjacency-changes
+ network 192.168.100.0 0.0.0.3 area 0
+ network 192.168.100.4 0.0.0.3 area 0
+ network 10.0.10.0 0.0.0.127 area 0
+ network 10.0.10.128 0.0.0.127 area 0
+!
+ip classless
+!
+ip flow-export version 9
+!
+!
+!
+!
+!
+!
+!
+line con 0
+!
+line aux 0
+!
+line vty 0 4
+ login
+!
+!
+!
+end
